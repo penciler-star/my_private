@@ -1,0 +1,361 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://E:\AD1\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2019/5/4</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">22:32:26</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc" class="file"><acronym title="E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc">E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">11</td></tr>
+</table>
+</td>
+</table><a name="IDJKGP4ODQBCL5LWK23ZLVHKEKJNRV1FFMTKGYXBLKCHNPMIV3RNML"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDP3SKAR5OTKE4MXK42MYHNG3QEFN0VQ5ZRZQYEZHS3EFZLA3W0SAD">Clearance Constraint (Gap=8mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKXOZKJFLFRXHE41O0IO114IBRFPRQRK2PA41KLGDCFT1XNZHFUVE">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJATODOUV00JBFAOGOPBQQC2OFHU2YMED2Y4GVBIWRHE4UQJENKXK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOAW1YAEIUYMDGQ2QRXYKZNHUIGTDUPB2X42SLMNF5UB4MZ5M3FOD">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSIX2SYXTZXRRGO1VXM2CPQPGIL44XCNZMNM2XXISMTBHSWSL1RO">Width Constraint (Min=10mil) (Max=20mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEIHMAAXUB0ZBDTLKVWFEC2ZL1JHYXQNQJXVCHQJAPBDLWSZUFL4C">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRPQVWCUQ4DR5MLUC0WHITMXTOIDTTEDVM4KFJSCLEWPJ0DOZM5FB">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDM0EG3XPPAC5FH0URXLF3BOJLDF2NO421NZ2GQEGDXOUPRI5N0MWO">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNSYMCAZKTR35L4P1UB4ACCJ1UEDBCKVUBP2GA4FCOD2TXL4QVUBG">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQIWAO0OMI1M5IDG1M1ETGTIPXDAUZFFOEUTWTHMBU5JNDP235ELB">Silk To Solder Mask (Clearance=0mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO4XJ5S0JFEHSNEYYATB41QEALIOO5F1VRS4SLJPKQLKMKF03XDLI">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0OPBVZ0OZLJJNG4B4OZHPWVDW05CC14K240WNK5LF24K3BMPAG">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBBSBEWP1ZLJ4OHGGKNPMPCJ5BIK1TQB5AFZTEAEIZQYLP3OE3WVC">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">11</td>
+</tr>
+</table><br><a name="IDNSYMCAZKTR35L4P1UB4ACCJ1UEDBCKVUBP2GA4FCOD2TXL4QVUBG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.375mil|Location2.X=4405.625mil|Location1.Y=3192.816mil|Location2.Y=3204.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.375mil|Location2.X=4405.625mil|Location1.Y=3192.816mil|Location2.Y=3204.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C10-1(4429.528mil,3230mil) on Bottom And Pad C10-2(4370.472mil,3230mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3752.816mil|Location2.X=3764.066mil|Location1.Y=3809.375mil|Location2.Y=3820.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3752.816mil|Location2.X=3764.066mil|Location1.Y=3809.375mil|Location2.Y=3820.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C1-1(3790mil,3844.528mil) on Bottom And Pad C1-2(3790mil,3785.472mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4502.816mil|Location2.X=4514.066mil|Location1.Y=3339.375mil|Location2.Y=3350.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4502.816mil|Location2.X=4514.066mil|Location1.Y=3339.375mil|Location2.Y=3350.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C14-1(4540mil,3315.472mil) on Bottom And Pad C14-2(4540mil,3374.528mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3752.816mil|Location2.X=3764.066mil|Location1.Y=3648.903mil|Location2.Y=3660.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3752.816mil|Location2.X=3764.066mil|Location1.Y=3648.903mil|Location2.Y=3660.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C2-1(3790mil,3684.056mil) on Bottom And Pad C2-2(3790mil,3625mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.816mil|Location2.X=3459.066mil|Location1.Y=3809.847mil|Location2.Y=3821.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.816mil|Location2.X=3459.066mil|Location1.Y=3809.847mil|Location2.Y=3821.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C3-1(3485mil,3845mil) on Bottom And Pad C3-2(3485mil,3785.944mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.816mil|Location2.X=3459.066mil|Location1.Y=3619.375mil|Location2.Y=3630.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.816mil|Location2.X=3459.066mil|Location1.Y=3619.375mil|Location2.Y=3630.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C4-1(3485mil,3595.472mil) on Bottom And Pad C4-2(3485mil,3654.528mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.816mil|Location2.X=3139.066mil|Location1.Y=3974.375mil|Location2.Y=3985.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.816mil|Location2.X=3139.066mil|Location1.Y=3974.375mil|Location2.Y=3985.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad C5-1(3165mil,3950.472mil) on Bottom And Pad C5-2(3165mil,4009.528mil) on Bottom [Solder Side] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4517.816mil|Location2.X=4529.066mil|Location1.Y=3278.903mil|Location2.Y=3290.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4517.816mil|Location2.X=4529.066mil|Location1.Y=3278.903mil|Location2.Y=3290.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad D1-1(4555mil,3255mil) on TOP And Pad D1-2(4555mil,3314.056mil) on TOP [Top Solder] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3692.816mil|Location2.X=3704.066mil|Location1.Y=2954.375mil|Location2.Y=2965.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3692.816mil|Location2.X=3704.066mil|Location1.Y=2954.375mil|Location2.Y=2965.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (7.749mil &lt; 10mil) Between Pad D3-1(3730mil,2989.528mil) on TOP And Pad D3-2(3730mil,2930.472mil) on TOP [Top Solder] Mask Sliver [7.749mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.995mil|Location2.X=3866.245mil|Location1.Y=3746.675mil|Location2.Y=3757.925mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.995mil|Location2.X=3866.245mil|Location1.Y=3746.675mil|Location2.Y=3757.925mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.282mil &lt; 10mil) Between Pad U2-7(3880mil,3720mil) on Multi-Layer And Via (3850mil,3770mil) from TOP to Bottom [Top Solder] Mask Sliver [8.282mil] / [Solder Side] Mask Sliver [8.282mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\111%E6%88%91%E7%9A%84%E4%B8%9C%E8%A5%BF\%E6%9A%91%E6%9C%9F%E8%AE%BE%E8%AE%A1\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.995mil|Location2.X=3866.245mil|Location1.Y=3782.075mil|Location2.Y=3793.325mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\111我的东西\暑期设计\Audio_receiver\Audio_receiver.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.995mil|Location2.X=3866.245mil|Location1.Y=3782.075mil|Location2.Y=3793.325mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.282mil &lt; 10mil) Between Pad U2-8(3880mil,3820mil) on Multi-Layer And Via (3850mil,3770mil) from TOP to Bottom [Top Solder] Mask Sliver [8.282mil] / [Solder Side] Mask Sliver [8.282mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
